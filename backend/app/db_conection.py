@@ -15,9 +15,6 @@ config = load_dotenv(DOTENV_PATH)
 
 engine = create_engine(
     os.environ.get("DATABASE_URL"),
-    connect_args={
-        "check_same_thread": False
-    }
 )
 
 
