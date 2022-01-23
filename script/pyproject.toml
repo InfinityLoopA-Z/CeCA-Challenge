@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "ceca-script"
+version = "0.1.0"
+description = "This scripts inserts data from json file into mysql"
+authors = ["felixhc <felixhumbertocarabajal5@gmail.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+PyMySQL = "^1.0.2"
+python-dotenv = "^0.19.2"
+
+[tool.poetry.dev-dependencies]
+pycodestyle = "^2.8.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"

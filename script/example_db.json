@@ -1,0 +1,54 @@
+[
+    {
+        "id": "9b38099d-070a-4936-8f82-e1189f50acb5",
+        "car_name": "chevrolet corsa",
+        "car_plate": "ABC123"
+    },
+    {
+        "id": "e602a957-2a1d-409a-97f1-7ac6d107ca7a",
+        "car_name": "toyota corolla",
+        "car_plate": "DEF456"
+    },
+    {
+        "id": "f8f8f8f8-f8f8-f8f8-f8f8-f8f8f8f8f8f8",
+        "car_name": "ford focus",
+        "car_plate": "GHI789"
+    },
+    {
+        "id": "z3c3c3c3-3c3c-3c3c-3c3c-3c3c3c3c3c3c",
+        "car_name": "ford mustang",
+        "car_plate": "JKL012"
+    },
+    {
+        "id": "a4a4a4a4-a4a4-a4a4-a4a4-a4a4a4a4a4a4",
+        "car_name": "tesla model s",
+        "car_plate": "MNO345"
+    },
+    {
+        "id": "8e9e41ed-233e-4e7d-b806-6c982e4b3f06",
+        "car_name": "audi a4",
+        "car_plate": "PQR678"
+    },
+    {
+        "id": "a10a10a1-a1a1-a1a1-a1a1-a1a1a1a1a1a1",
+        "car_name": "audi a6",
+        "car_plate": "STU901"
+    },
+    {
+        "id": "10k10k10-k10k-10k-10k-10k10k10k10k",
+        "car_name": "tesla model x",
+        "car_plate": "IJK123"
+    },
+    {
+        "id": "a33a33a3-3a3a-3a3a-3a3a-3a3a3a3a3a3a",
+        "car_name": "ford asp",
+        "car_plate": "LMN456"
+    },
+    {
+        "id": "424eda54-5465-487a-934e-bdff81b9005b",
+        "car_name": "chevrolet camaro",
+        "car_plate": "PQR789"
+    }
+]
+
+
