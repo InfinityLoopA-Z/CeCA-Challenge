@@ -6,7 +6,7 @@ from dotenv import load_dotenv
 # read JSON file which is in the next parent folder
 PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 BASE_DIR = os.path.dirname(PROJECT_ROOT)
-DOTENV_PATH = os.path.join(BASE_DIR, '.env')
+DOTENV_PATH = os.path.join(PROJECT_ROOT, '.env')
 config = load_dotenv(DOTENV_PATH)
 
 

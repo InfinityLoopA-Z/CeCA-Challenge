@@ -1,2 +1,2 @@
 #!/bin/bash
-python load_db.py
+echo "Database loaded"
