@@ -1,0 +1,76 @@
+version: '3.9'
+
+services:
+  db:
+      container_name: 'db'
+      image: mysql:5.7
+      restart: always
+      environment:
+        MYSQL_ROOT_PASSWORD: 'ceca'
+        MYSQL_DATABASE: 'CECA'
+        MYSQL_USER: 'ceca'
+        MYSQL_PASSWORD: 'ceca'
+      ports:
+        - '3306:3306'
+
+      expose:
+        - '3306'
+      volumes:
+        - ceca:/var/lib/mysql
+      networks:
+        - local-net
+
+  script_db_loader:
+    container_name: 'script_db_loader'
+    restart: 'no'
+    build: ./script
+    volumes:
+      - ./code:/usr/src/db_loader
+    networks:
+      - local-net
+    depends_on:
+      - db
+
+  # backend:
+  #   container_name: 'backend'
+  #   # path配下のDockerfile読み込み
+  #   build: ./backend
+  #   ports:
+  #     - '8000:8000'
+  #   volumes:
+  #     - ./code:/usr/src/api
+  #   networks:
+  #     - local-net
+  #   depends_on:
+  #     - db
+  #     - script_db_loader
+
+  # serverless_function:
+  #   container_name: 'serverless_function'
+  #   build: ./serverless
+  #   volumes:
+  #     - ./code:/usr/src/serverless_function
+  #   networks:
+  #     - local-net
+  #   depends_on:
+  #     - backend
+  
+  # frontend:
+  #   container_name: 'frontend'
+  #   build: ./frontend
+  #   ports:
+  #     - '3000:3000'
+  #   volumes:
+  #     - ./code:/usr/src/frontend
+  #   networks:
+  #     - local-net
+  #   depends_on:
+  #     - backend
+  #     - serverless_function
+
+volumes:
+  ceca:
+
+networks:
+  local-net:
+    driver: bridge
