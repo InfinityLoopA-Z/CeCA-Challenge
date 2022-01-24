@@ -5,7 +5,7 @@ description = "This scripts inserts data from json file into mysql"
 authors = ["felixhc <felixhumbertocarabajal5@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.10"
+python = "^3.9.7"
 PyMySQL = "^1.0.2"
 python-dotenv = "^0.19.2"
 

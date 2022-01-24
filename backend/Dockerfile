@@ -21,4 +21,4 @@ RUN chmod + x /entrypoint.sh
 EXPOSE 8000
 ENTRYPOINT [ "/entrypoint.sh" ]
 
-CMD uvicorn app.crud:app --reload
+CMD uvicorn app.main:app --reload

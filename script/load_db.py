@@ -39,12 +39,12 @@ try:
 except Exception as e:
     print(e)
 
-cursor.execute(f'DROP TABLE IF EXISTS {db_name}')
-sql = f'''CREATE TABLE {db_name}(
+cursor.execute('DROP TABLE IF EXISTS {}'.format(db_name))
+sql = '''CREATE TABLE {}(
    ID CHAR(36) NOT NULL,
    CAR_NAME CHAR(20),
    CAR_PLATE CHAR(6)
-);'''
+);'''.format(db_name)
 
 cursor.execute(sql)
 
@@ -53,9 +53,14 @@ for i, item in enumerate(json_obj):
     id = validate_string(item.get("id", None))
     car_name = validate_string(item.get('car_name', None))
     car_plate = validate_string(item.get('car_plate', None))
-    sql = f'''INSERT INTO {db_name}(
+    sql = '''INSERT INTO {db_name}(
         id, car_name, car_plate
-        ) VALUES('{id}', '{car_name}', '{car_plate}')'''
+        ) VALUES('{id}', '{car_name}', '{car_plate}')'''.format(
+            db_name=db_name,
+            id=id,
+            car_name=car_name,
+            car_plate=car_plate
+        )
     cursor.execute(sql)
 con.commit()
 con.close()

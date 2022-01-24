@@ -10,7 +10,7 @@ const Form = (props) => {
     }
   return (
       <>
-        <form>
+        <form onSubmit={() => sendCarPlate(carPlate)}>
             <label>
                 Car Plate:
                 <input 
@@ -20,7 +20,7 @@ const Form = (props) => {
                     onChange={onChangeCarPlate}
                 />
             </label>
-            <button type="submit" onClick={() => sendCarPlate(carPlate)}>
+            <button type="submit">
                 Submit
             </button>
         </form>

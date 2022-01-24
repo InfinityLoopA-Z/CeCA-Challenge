@@ -1,5 +1,6 @@
 from typing import List
 from fastapi import FastAPI, Depends
+from fastapi.middleware.cors import CORSMiddleware
 from starlette.responses import RedirectResponse
 
 from . import models, schemas
@@ -8,7 +9,19 @@ from .db_conection import SessionLocal, engine
 app = FastAPI()
 
 
+origins = ["*"]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
 # Connect to Db dependency
+# get_lambda function dependency
 def get_db():
     try:
         db = SessionLocal()
@@ -23,7 +36,7 @@ def main():
 
 
 # Read
-@app.get('/cars/', response_model=List[schemas.Car])
+@app.get('/car', response_model=List[schemas.Car])
 def show_cars(db: SessionLocal = Depends(get_db)):
     return db.query(models.Car).all()
 
