@@ -11,6 +11,10 @@ plugins:
   - serverless-offline
 
 custom:
+  serverless-offline:
+    httpPort: 8000
+    stageVariables:
+      foo: "bar"
   allowedHeaders:
     - Accept
     - Content-Type

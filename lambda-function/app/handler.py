@@ -1,15 +1,8 @@
 import json
-import redis
 import os
 
 from .db_connection import SessionLocal, engine
 from . import models
-
-redis_client = redis.Redis(
-    host=os.environ['REDIS_HOST'],
-    port=os.environ['REDIS_PORT'],
-    db=0
-)
 
 
 # Connect to Db dependency
@@ -21,9 +14,18 @@ def get_db():
         db.close()
 
 
+def _get_car_plate(event: str):
+    value = event['pathParameters']['car_plate']
+    json_acceptable_string = value.replace("'", "\"")
+    d = json.loads(json_acceptable_string)
+    return d['car_plate']
+    # return event["car_plate"]
+
+
 # Search in redis cache a car plate
 def _search_redis(car_plate):
-    car_name = redis_client.get(car_plate)
+    # car_name = redis_client.get(car_plate)
+    car_name = car_plate
     if car_name is None:
         return None
     else:
@@ -36,7 +38,7 @@ def _search_redis(car_plate):
 
 # Save in redis cache a car plate and car name
 def _save_redis(car_name, car_plate):
-    redis_client.set(car_plate, car_name)
+    # redis_client.set(car_plate, car_name)
     car = {
         'car_name': car_name,
         'car_plate': car_plate
@@ -57,7 +59,7 @@ def _search_db(db: SessionLocal, car_plate):
 
 def get_car(event, context):
     if event is not None:
-        car_plate = event
+        car_plate = _get_car_plate(event)
         car_redis = _search_redis(car_plate)
         if car_redis is None:
             car_db = _search_db(car_plate)
