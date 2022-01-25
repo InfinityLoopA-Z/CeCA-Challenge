@@ -1,7 +1,3 @@
-
-import React, { useState } from 'react';
-
-
 const Form = (props) => {
     const { sendCarPlate, car, setCar } = props;
     
@@ -18,7 +14,7 @@ const Form = (props) => {
                     <input 
                         type="text" 
                         name="carPlate"
-                        value={carPlate}
+                        value={car}
                         onChange={onChangeCarPlate}
                     />
                 </label>
