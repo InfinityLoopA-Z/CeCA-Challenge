@@ -10,13 +10,12 @@ const App = () => {
   const api = axios.create({
     baseURL: 'http://localhost:8000/',
   });
-  const sendCarPlate = async (e,carPlate) => {
-    e.preventDefault();
+  const sendCarPlate = async (carPlate) => {
     try {
 
       const res = await api.get(`cars/${carPlate}`);
       localStorage.setItem('Car', res.data);
-      console.log(res.data);
+      console.log(res);
       setCarPlate(res.data);
   
     } catch (error) {
@@ -27,11 +26,18 @@ const App = () => {
 
   return (
     <div>
-      <Form sendCarPlate={(car, setCar, sendCarPlate)}/>
+      <Form sendCarPlate={sendCarPlate}
+      car={car}
+      setCar={setCar}
+      />
       <div>
-        <h1>CAR ID: {carPlate.id}</h1>
-        <h1>CAR NAME: {carPlate.car_name}</h1>
-        <h1>CAR PLATE: {carPlate.car_plate}</h1>
+        { carPlate.id ? ( 
+          <div>
+            <h1>CAR ID: {carPlate.id}</h1>
+            <h1>CAR NAME: {carPlate.car_name}</h1>
+            <h1>CAR PLATE: {carPlate.car_plate}</h1> 
+          </div>
+        ) : null }
       </div>
     </div>
   );
