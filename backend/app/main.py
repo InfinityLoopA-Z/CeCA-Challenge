@@ -52,7 +52,9 @@ def read_cars_by_plate(car_plate: str, db: SessionLocal = Depends(get_db)):
         car_plate = {
             "car_plate": car_plate
         }
-        data = requests.get(f'http://localhost:8080/dev/lambda_function/cars/{car_plate}')
+        data = requests.get(
+            f'http://localhost:8080/dev/lambda_function/cars/{car_plate}'
+        )
         try:
             data = (data.content).decode('utf-8').replace("'", '"')
             data = json.loads(data)
