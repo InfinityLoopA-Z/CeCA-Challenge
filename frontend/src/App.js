@@ -5,24 +5,29 @@ import { useState } from 'react';
 
 
 const App = () => {
-  const [carPlate, setCarPlate] = useState({});
+  const [carPlate, setCarPlate] = useState([]);
+  const [car, setCar] = useState('');
   const api = axios.create({
     baseURL: 'http://localhost:8000/',
   });
   const sendCarPlate = async (e,carPlate) => {
     e.preventDefault();
     try {
+
       const res = await api.get(`cars/${carPlate}`);
+      localStorage.setItem('Car', res.data);
+      console.log(res.data);
       setCarPlate(res.data);
-      console.log("Res", res);
+  
     } catch (error) {
       console.log(error);
     }
   }
+  
 
   return (
     <div>
-      <Form sendCarPlate={sendCarPlate}/>
+      <Form sendCarPlate={(car, setCar, sendCarPlate)}/>
       <div>
         <h1>CAR ID: {carPlate.id}</h1>
         <h1>CAR NAME: {carPlate.car_name}</h1>
