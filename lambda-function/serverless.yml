@@ -9,12 +9,18 @@ provider:
 
 plugins:
   - serverless-offline
+  - serverless-offline-redis-server
+
 
 custom:
   serverless-offline:
-    httpPort: 8000
-    stageVariables:
-      foo: "bar"
+    httpPort: 8080
+  
+  redis:
+    host: localhost
+    port: 8888
+    db: 0
+
   allowedHeaders:
     - Accept
     - Content-Type

@@ -1,4 +1,4 @@
-FROM python:3.10-alpine as base
+FROM python:3.9-alpine as base
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV POETRY_VIRTUALENVS_CREATE=false

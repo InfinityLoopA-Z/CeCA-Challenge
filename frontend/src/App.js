@@ -31,9 +31,8 @@ const App = () => {
       setCar={setCar}
       />
       <div>
-        { carPlate.id ? ( 
+        { carPlate.car_name ? ( 
           <div>
-            <h1>CAR ID: {carPlate.id}</h1>
             <h1>CAR NAME: {carPlate.car_name}</h1>
             <h1>CAR PLATE: {carPlate.car_plate}</h1> 
           </div>
